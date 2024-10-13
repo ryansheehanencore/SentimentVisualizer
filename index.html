@@ -4,15 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sentiment Visualizer</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+        }
+
+        #text {
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1 id="title">Sentiment Visualizer</h1>
-        <p id="prompt">Press ‘M’ to unmute transcription</p>
-        <div id="word-cloud"></div>
-    </div>
+    <div id="text"></div>
 
-    <script src="script.js"></script>
+    <script>
+        // Define sentiment word lists
+        const positiveWords = [
+            "able", "abounds", "achievement", "achievements", "advantage", "advantages", "amazing", "asset", "assets",
+            // Add more positive words as needed
+        ];
+
+        const negativeWords = [
+            "abandon", "abandoned", "abandonment", "abort", "aborted", "aborts", "absconded", "absconding", "absconds",
+            // Add more negative words as needed
+        ];
+
+        const neutralWords = [
+            "account", "accounts", "acknowledge", "acknowledged", "acknowledging", "acknowledges",
+            // Add more neutral words as needed
+        ];
+
+        // Function to display a word on the screen
+        function displayWord(word) {
+            const textElement = document.getElementById("text");
+            textElement.innerText = word;
+            textElement.style.opacity = 1;
+
+            // Fade out after 1.5 seconds
+            setTimeout(() => {
+                textElement.style.opacity = 0;
+            }, 1500);
+        }
+
+        // Example function to simulate displaying words
+        function randomWordDisplay() {
+            const allWords = [...positiveWords, ...negativeWords, ...neutralWords];
+            const randomWord = allWords[Math.floor(Math.random() * allWords.length)];
+            displayWord(randomWord);
+
+            // Continue displaying random words every 2 seconds
+            setTimeout(randomWordDisplay, 2000);
+        }
+
+        // Start the word display
+        randomWordDisplay();
+    </script>
 </body>
 </html>
