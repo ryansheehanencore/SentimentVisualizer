@@ -6,70 +6,47 @@
     <title>Sentiment Visualizer</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
             background-color: black;
             color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            font-size: 24px;
             font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
         }
 
-        #text {
-            text-align: center;
+        #title {
+            font-size: 3rem;
+            color: green;
+            margin-top: 20vh;
+        }
+
+        #prompt {
+            font-size: 1.5rem;
+            color: white;
+            margin-top: 2vh;
+        }
+
+        #word-cloud {
+            position: relative;
+            width: 100%;
+            height: 50vh;
+            margin: 2vh auto;
+            overflow: hidden;
+        }
+
+        .word {
+            position: absolute;
+            font-size: 20px;
             opacity: 0;
-            transition: opacity 1s ease-in-out;
+            transition: opacity 0.5s ease-in-out;
         }
     </style>
 </head>
 <body>
-    <div id="text"></div>
+    <h1 id="title">Sentiment Visualizer</h1>
+    <p id="prompt"></p>
+    <div id="word-cloud"></div>
 
-    <script>
-        // Define sentiment word lists
-        const positiveWords = [
-            "able", "abounds", "achievement", "achievements", "advantage", "advantages", "amazing", "asset", "assets",
-            // Add more positive words as needed
-        ];
-
-        const negativeWords = [
-            "abandon", "abandoned", "abandonment", "abort", "aborted", "aborts", "absconded", "absconding", "absconds",
-            // Add more negative words as needed
-        ];
-
-        const neutralWords = [
-            "account", "accounts", "acknowledge", "acknowledged", "acknowledging", "acknowledges",
-            // Add more neutral words as needed
-        ];
-
-        // Function to display a word on the screen
-        function displayWord(word) {
-            const textElement = document.getElementById("text");
-            textElement.innerText = word;
-            textElement.style.opacity = 1;
-
-            // Fade out after 1.5 seconds
-            setTimeout(() => {
-                textElement.style.opacity = 0;
-            }, 1500);
-        }
-
-        // Example function to simulate displaying words
-        function randomWordDisplay() {
-            const allWords = [...positiveWords, ...negativeWords, ...neutralWords];
-            const randomWord = allWords[Math.floor(Math.random() * allWords.length)];
-            displayWord(randomWord);
-
-            // Continue displaying random words every 2 seconds
-            setTimeout(randomWordDisplay, 2000);
-        }
-
-        // Start the word display
-        randomWordDisplay();
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
