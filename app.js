@@ -86,7 +86,7 @@ function displayWord(word, color) {
 
         // Fade-in and out effect
         setTimeout(() => wordElement.style.opacity = 1, 100);
-        setTimeout(() => wordElement.style.opacity = 0, 5000); // Adjust fade-out duration as needed
+        setTimeout(() => wordElement.style.opacity = 0, 20000); // Adjust fade-out duration as needed
     }
 }
 
